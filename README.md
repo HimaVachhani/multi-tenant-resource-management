@@ -52,16 +52,20 @@ src/
 | JPA Auditing | Automatically captures created and updated timestamps |
 
 ## Setup & Run
+- Clone Repository
 ```
-1. Clone Repository
 git clone https://github.com/HimaVachhani/multi-tenant-resource-management.git
 cd multi-tenant-resource-management
+```
 
-2. Run Application
+- Run Application
 Since H2 is in-memory, no external DB setup is required.
+```
 mvn spring-boot:run
+```
 
-3. Access Application
+- Access Application
+```
 API Base URL: http://localhost:8080
 H2 Console: http://localhost:8080/h2-console
 JDBC URL: jdbc:h2:mem:multitenantdb
@@ -70,22 +74,22 @@ Password: (leave blank)
 ```
 
 ## Authentication & Tenant Handling
-```
-Login using /api/auth/login → receive a JWT token.
-Include the token in request headers:
 
+- Login using /api/auth/login → receive a JWT token.
+- Include the token in request headers:
+```
 Authorization: Bearer <token>
 X-Tenant-ID: tenant1
-
-The app switches the database schema based on the X-Tenant-ID value dynamically.
 ```
+- The app switches the database schema based on the X-Tenant-ID value dynamically.
 
 ## Authentication Flow
-```
-/auth/login → Authenticates user with username & password.
-On success, returns a JWT token.
-Include the token in future requests:
 
+- /auth/login → Authenticates user with username & password.
+- On success, returns a JWT token.
+- Include the token in future requests:
+- 
+```
 Authorization: Bearer <your_token_here>
 Optionally, include:
 X-Tenant-ID: tenant_1
@@ -121,7 +125,7 @@ Each request is filtered by TenantFilter, which reads the tenant ID from headers
 ```
 
 ## Useful Commands
-Here's the markdown table for the commands:
+Here's the table for the commands:
 
 | Command | Description |
 |---------|-------------|
@@ -241,7 +245,7 @@ jdbc:h2:mem:tenantdb
 You can manually verify tables like TENANTS, USERS, RESOURCES.
 ```
 
-Here's the markdown table for the controllers:
+Here's the table for the API:
 
 | Controller | Path Prefix | Description |
 |------------|-------------|-------------|
